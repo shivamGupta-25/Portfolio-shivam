@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-// import { Button } from './ui/button'
+import ContactForm from './ContactForm'
 
 const TopNav = () => {
   const [isHovered, setIsHovered] = useState(false)
@@ -99,9 +99,10 @@ const TopNav = () => {
           `}
         />
       </div>
-      {/* <Button className="cursor-pointer font-bold text-lg rounded-full px-6 py-5">
-        Resume
-      </Button> */}
+
+      <div className='overflow-hidden'>
+        <ContactForm />
+      </div>
     </div>
   )
 }
