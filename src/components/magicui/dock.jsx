@@ -9,8 +9,14 @@ const DEFAULT_SIZE = 40;
 const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
+// Previous dock effect without shadow
+
+// const dockVariants = cva(
+//   "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md"
+// );
+
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md"
+  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md shadow-[0_4px_6px_-1px_rgba(15,23,42,0.15),0_2px_4px_-1px_rgba(15,23,42,0.08),0_20px_50px_-12px_rgba(15,23,42,0.35)] dark:shadow-[0_4px_6px_-1px_rgba(248,250,252,0.15),0_2px_4px_-1px_rgba(248,250,252,0.08),0_20px_50px_-12px_rgba(248,250,252,0.25)] border-slate-200/20 dark:border-slate-800/20"
 );
 
 const Dock = React.forwardRef((

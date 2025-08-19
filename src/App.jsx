@@ -1,7 +1,12 @@
 import React from 'react'
-import { DockNav } from './components/DockNav'
-import { Button } from './components/ui/button'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 import TopNav from './components/TopNav'
+import { DockNav } from './components/DockNav'
+import HeroSection from './components/HeroSection'
+import MessageSection from './components/MessageSection'
+
+gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   return (
@@ -11,9 +16,8 @@ const App = () => {
         <DockNav />
       </nav>
       <main>
-        <div className="flex min-h-svh flex-col items-center justify-center">
-          <Button>Click me</Button>
-        </div>
+        <HeroSection />
+        <MessageSection />
       </main>
     </>
   )

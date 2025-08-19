@@ -75,11 +75,11 @@ const DATA = {
         url: "#",
         icon: Icons.linkedin,
       },
-      X: {
-        name: "X",
-        url: "#",
-        icon: Icons.x,
-      },
+      // X: {
+      //   name: "X",
+      //   url: "#",
+      //   icon: Icons.x,
+      // },
       email: {
         name: "Send Email",
         url: "#",
@@ -127,7 +127,7 @@ export function DockNav() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full" />
+          <Separator orientation="vertical" className="h-full bg-slate-500" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>
@@ -149,7 +149,7 @@ export function DockNav() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full py-2" />
+          <Separator orientation="vertical" className="h-full bg-slate-500" />
           <DockIcon>
             <Tooltip>
               <TooltipTrigger asChild>
