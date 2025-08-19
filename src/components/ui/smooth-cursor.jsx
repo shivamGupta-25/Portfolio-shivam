@@ -65,6 +65,7 @@ export function SmoothCursor({
   }
 }) {
   const [isMoving, setIsMoving] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const lastMousePos = useRef({ x: 0, y: 0 });
   const velocity = useRef({ x: 0, y: 0 });
   const lastUpdateTime = useRef(Date.now());
@@ -84,7 +85,22 @@ export function SmoothCursor({
     damping: 35,
   });
 
+  // Check if device supports hover (desktop)
   useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
+
+  useEffect(() => {
+    // Only run cursor logic on desktop devices
+    if (!isDesktop) return;
+
     const updateVelocity = (currentPos) => {
       const currentTime = Date.now();
       const deltaTime = currentTime - lastUpdateTime.current;
@@ -151,7 +167,10 @@ export function SmoothCursor({
       document.body.style.cursor = "auto";
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [cursorX, cursorY, rotation, scale]);
+  }, [cursorX, cursorY, rotation, scale, isDesktop]);
+
+  // Don't render anything on mobile devices
+  if (!isDesktop) return null;
 
   return (
     (<motion.div
