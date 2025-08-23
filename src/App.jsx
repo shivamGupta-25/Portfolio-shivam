@@ -22,6 +22,7 @@ const App = () => {
         <MessageSection />
         <About />
         <Skills />
+        <div className='h-screen border-2 border-amber-300'></div>
       </main>
     </>
   )
