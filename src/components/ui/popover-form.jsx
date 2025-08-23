@@ -24,7 +24,7 @@ export function PopoverForm({
         layoutId={`${title}-wrapper`}
         onClick={() => setOpen(true)}
         style={{ borderRadius: 8 }}
-        className="flex h-9 items-center border border-input bg-secondary-foreground px-3 text-md font-bold text-primary-foreground outline-none">
+        className="flex h-9 items-center border border-input hover:border-primary/60 bg-secondary-foreground hover:bg-secondary-foreground/90 px-3 text-md font-bold text-primary-foreground transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-2">
         <motion.span layoutId={`${title}-title`}>{title}</motion.span>
       </motion.button>
       <AnimatePresence>
@@ -102,7 +102,7 @@ export function PopoverFormButton({
   return (
     (<button
       type="submit"
-      className="ml-auto flex h-6 w-26 items-center justify-center overflow-hidden rounded-md bg-gradient-to-b from-primary/90 to-primary px-3 text-xs font-semibold text-primary-foreground shadow-[0_0_1px_1px_rgba(255,255,255,0.08)_inset,0_1px_1.5px_0_rgba(0,0,0,0.32),0_0_0_0.5px_#1a94ff]">
+      className="ml-auto flex h-6 w-26 items-center justify-center overflow-hidden rounded-md bg-gradient-to-b from-primary/90 to-primary px-3 text-xs font-semibold text-primary-foreground shadow-[0_0_1px_1px_rgba(255,255,255,0.08)_inset,0_1px_1.5px_0_rgba(0,0,0,0.32),0_0_0_0.5px_#1a94ff] transition-all duration-300 ease-out hover:from-primary hover:to-primary/80 hover:shadow-[0_0_2px_2px_rgba(255,255,255,0.12)_inset,0_2px_3px_0_rgba(0,0,0,0.4),0_0_0_1px_#1a94ff] hover:scale-105 active:scale-101 active:shadow-[0_0_1px_1px_rgba(255,255,255,0.06)_inset,0_1px_1px_0_rgba(0,0,0,0.24),0_0_0_0.5px_#1a94ff] active:from-primary/80 active:to-primary/70">
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={`${loading}`}

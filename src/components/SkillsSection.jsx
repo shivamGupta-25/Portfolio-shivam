@@ -53,7 +53,7 @@ const Skills = () => {
       trigger: ".skills-container",
       start: isTablet ? "top 80%" : "top 85%",
       end: isTablet ? "+=100%" : "+=150%",
-      scrub: true,
+      // scrub: true,
       // markers: true
     };
 

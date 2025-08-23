@@ -7,6 +7,8 @@ import HeroSection from './components/HeroSection'
 import MessageSection from './components/MessageSection'
 import About from './components/AboutSection'
 import Skills from './components/SkillsSection'
+import Experience from './components/ExperienceSection'
+import EducationSection from './components/EducationSection'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +24,8 @@ const App = () => {
         <MessageSection />
         <About />
         <Skills />
+        <Experience />
+        <EducationSection />
         <div className='h-screen border-2 border-amber-300'></div>
       </main>
     </>

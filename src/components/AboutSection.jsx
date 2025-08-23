@@ -142,18 +142,18 @@ const About = () => {
           </p>
 
           <p className="text-foreground">
+            <Highlighter action="bracket" color="#10b981">
+              I have hands-on experience in data cleaning and validation from my administrative internships at University of Delhi,
+              {" "}as a Vice-Chancellor Intern and Administrative intern at Shivaji College.
+            </Highlighter>
+          </p>
+          
+          <p className="text-foreground">
             Beyond analytics, I build scalable web applications using{" "}
             <Highlighter action="underline" color="#ef4444">
               React, Next.js, and MongoDB
             </Highlighter>
             , combining data expertise with development skills to create impactful solutions.
-          </p>
-
-          <p className="text-foreground">
-            <Highlighter action="bracket" color="#10b981">
-            I have hands-on experience in data cleaning and validation from my administrative internships at University of Delhi,
-            {" "}as a Vice-Chancellor Intern and Administrative intern at Shivaji College.
-            </Highlighter>
           </p>
         </div>
       </div>
