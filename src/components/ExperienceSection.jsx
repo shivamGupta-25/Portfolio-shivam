@@ -3,6 +3,7 @@ import { MapPin, Calendar, Briefcase, Code, Building2, ExternalLink, ChevronDown
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ResumePDF from "@/Data/ShivamRajGupta_CV.pdf";
+import ProofOfWork from "./ProofOfWork";
 
 // Constants
 const EXPERIENCE_TYPES = {
@@ -357,14 +358,17 @@ const CallToAction = () => {
       <p className="text-sm text-muted-foreground mb-3 sm:mb-4">
         Want to see the complete picture?
       </p>
-      <Button
-        size="lg"
-        className="gap-2 text-sm sm:text-base cursor-pointer"
-        onClick={openResume}
-      >
-        <ExternalLink className="h-4 w-4" />
-        Download Resume
-      </Button>
+      <div className="flex sm:flex-row gap-2 sm:gap-4 justify-center">
+        <Button
+          size="lg"
+          className="gap-2 text-sm sm:text-base cursor-pointer"
+          onClick={openResume}
+        >
+          <ExternalLink className="h-4 w-4" />
+          Download Resume
+        </Button>
+        <ProofOfWork />
+      </div>
     </div>
   );
 };

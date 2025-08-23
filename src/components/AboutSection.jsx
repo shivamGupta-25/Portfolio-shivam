@@ -89,7 +89,7 @@ const About = () => {
   });
 
   return (
-    <div className="about-container container mx-auto px-4 py-8 md:py-22 max-w-6xl font-sans overflow-hidden">
+    <div className="about-container container mx-auto px-4 py-8 md:py-18 max-w-6xl font-sans overflow-hidden">
       <div className="about-header space-y-2 mb-12">
         <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-5xl text-foreground">
           About Me
@@ -142,7 +142,7 @@ const About = () => {
           </p>
 
           <p className="text-foreground">
-            <Highlighter action="bracket" color="#10b981">
+            <Highlighter action="bracket" color="#ef4444">
               I have hands-on experience in data cleaning and validation from my administrative internships at University of Delhi,
               {" "}as a Vice-Chancellor Intern and Administrative intern at Shivaji College.
             </Highlighter>
