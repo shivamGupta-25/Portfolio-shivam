@@ -4,22 +4,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { SplitText } from "gsap/SplitText"
 import { useMediaQuery } from "react-responsive"
-
-const skillsData = {
-  'Programming Languages': [
-    'Python', 'JavaScript', 'C++', 'HTML/CSS', 'LaTeX', 'SQL'
-  ],
-  'Data Science & Visualization': [
-    'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Tkinter'
-  ],
-  'Excel & Data Analysis': [
-    'Pivot Tables', 'Pivot Charts', 'Power Query', 'VLOOKUP',
-    'HLOOKUP', 'XLOOKUP', 'INDEX & MATCH', '...More'
-  ],
-  'Tools & Platforms': [
-    'MS Office', 'WordPress', 'VS Code', 'Git & GitHub'
-  ]
-}
+import { skillsData } from '@/Data/Data'
 
 const Skills = () => {
   const allSkills = Object.values(skillsData).flat()

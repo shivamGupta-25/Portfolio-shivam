@@ -1,6 +1,7 @@
 import React from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger, ScrollSmoother } from 'gsap/all'
 import TopNav from './components/TopNav'
 import { DockNav } from './components/DockNav'
 import HeroSection from './components/HeroSection'
@@ -9,24 +10,33 @@ import About from './components/AboutSection'
 import Skills from './components/SkillsSection'
 import Experience from './components/ExperienceSection'
 import EducationSection from './components/EducationSection'
+import CertificationSection from './components/CertificateSection'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const App = () => {
+  useGSAP(() => {
+    ScrollSmoother.create({
+      smooth: 3,
+      effects: true,
+    })
+  })
   return (
     <>
       <nav>
         <TopNav />
         <DockNav />
       </nav>
-      <main>
-        <HeroSection />
-        <MessageSection />
-        <About />
-        <Skills />
-        <Experience />
-        <EducationSection />
-        <div className='h-screen border-2 border-amber-300'></div>
+      <main id='smooth-wrapper'>
+        <div id='smooth-content'>
+          <HeroSection />
+          <MessageSection />
+          <About />
+          <Skills />
+          <Experience />
+          <EducationSection />
+          <CertificationSection />
+        </div>
       </main>
     </>
   )

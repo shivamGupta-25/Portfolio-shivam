@@ -48,7 +48,7 @@ const HeroSection = () => {
   });
 
   return (
-    <section className="bg-primary overflow-hidden">
+    <section id="hero" className="bg-primary overflow-hidden">
       <div className="hero-container">
         <div className="hero-content opacity-0 ">
           <div className="overflow-hidden">

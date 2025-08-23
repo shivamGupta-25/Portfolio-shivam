@@ -4,89 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ResumePDF from "@/Data/ShivamRajGupta_CV.pdf";
 import ProofOfWork from "./ProofOfWork";
-
-// Constants
-const EXPERIENCE_TYPES = {
-  INTERNSHIP: "internship",
-  FREELANCE: "freelance",
-  FULL_TIME: "full-time"
-};
-
-const TYPE_ICONS = {
-  [EXPERIENCE_TYPES.INTERNSHIP]: Building2,
-  [EXPERIENCE_TYPES.FREELANCE]: Code,
-  [EXPERIENCE_TYPES.FULL_TIME]: Briefcase
-};
-
-const TYPE_BADGE_CLASSES = {
-  [EXPERIENCE_TYPES.INTERNSHIP]: "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800",
-  [EXPERIENCE_TYPES.FREELANCE]: "bg-green-100 text-green-800 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800",
-  [EXPERIENCE_TYPES.FULL_TIME]: "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-950 dark:text-purple-300 dark:border-purple-800"
-};
-
-const DYNAMIC_COLORS = ['blue', 'green', 'yellow', 'pink', 'purple', 'indigo', 'red', 'emerald', 'orange', 'teal'];
-
-// Data
-const experienceData = [
-  {
-    id: "1",
-    title: "Administrative Intern",
-    company: "Vice-Chancellor Internship Scheme, University of Delhi",
-    period: "Nov 2024 – May 2025",
-    location: "North Campus, New Delhi",
-    type: EXPERIENCE_TYPES.INTERNSHIP,
-    logoUrl: "/logos/Delhi_University.png",
-    responsibilities: [
-      "Collected, organized, and validated large datasets to ensure accuracy.",
-      "Cleaned and formatted raw data, improving usability and reporting quality."
-    ],
-    technologies: ["Microsoft Excel", "Data Analysis", "Database Management"],
-    achievements: [
-      "Improved data processing efficiency by 40%",
-      "Handled over 10,000 student records with 99.8% accuracy"
-    ]
-  },
-  {
-    id: "2",
-    title: "Administrative Intern",
-    company: "Principal Internship Scheme - Shivaji College, University of Delhi",
-    period: "June 2024 – July 2025",
-    location: "New Delhi",
-    type: EXPERIENCE_TYPES.INTERNSHIP,
-    logoUrl: "/logos/shivaji logo.png",
-    responsibilities: [
-      "Supported daily administrative operations by preparing and organizing data.",
-      "Handled official documentation and correspondence across departments."
-    ],
-    technologies: ["Microsoft Office", "Data Organization", "Communication Platforms"],
-    achievements: [
-      "Streamlined document management workflow",
-      "Facilitated communication between 5+ departments"
-    ]
-  },
-  {
-    id: "3",
-    title: "Web Developer",
-    company: "Freelance",
-    period: "July 2025",
-    location: "New Delhi",
-    type: EXPERIENCE_TYPES.FREELANCE,
-    logoUrl: "/logos/Udhgeet-Logo.png",
-    responsibilities: [
-      "Developed a fully functional website (udgeet.in) using WordPress and Elementor.",
-      "Optimized website for performance, SEO, and mobile responsiveness."
-    ],
-    technologies: ["WordPress", "Elementor", "HTML/CSS", "SEO"],
-    achievements: [
-      "Achieved 95+ PageSpeed Insights score",
-      "Delivered project 2 weeks ahead of schedule"
-    ]
-  }
-];
+import { EXPERIENCE_TYPES, TYPE_ICONS, TYPE_BADGE_CLASSES, DYNAMIC_COLORS, experienceData } 
+from "@/Data/Data";
 
 // Utility functions
 const getTypeIcon = (type) => {
-  const IconComponent = TYPE_ICONS[type.toLowerCase()] || TYPE_ICONS[EXPERIENCE_TYPES.FULL_TIME];
+  const iconName = TYPE_ICONS[type.toLowerCase()] || TYPE_ICONS[EXPERIENCE_TYPES.FULL_TIME];
+  const IconComponent = iconName === "Building2" ? Building2 :
+    iconName === "Code" ? Code :
+      iconName === "Briefcase" ? Briefcase : Briefcase;
   return <IconComponent className="h-3.5 w-3.5" />;
 };
 
@@ -124,7 +50,7 @@ const TechnologyPreview = ({ technologies, maxVisible = 3, className = "" }) => 
   );
 };
 
-const ExperienceCardHeader = ({ experience, isExpanded, onToggle }) => {
+const ExperienceCardHeader = ({ experience, isExpanded, onToggle, hasContent }) => {
   return (
     <div className="flex flex-col lg:flex-row lg:items-start gap-3 sm:gap-4">
       {/* Logo and Title */}
@@ -149,20 +75,22 @@ const ExperienceCardHeader = ({ experience, isExpanded, onToggle }) => {
                 <span className="hidden sm:inline">{capitalizeType(experience.type)}</span>
                 <span className="sm:hidden">{capitalizeType(experience.type)}</span>
               </Badge>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onToggle();
-                }}
-                className="transition-all duration-200 p-1.5 rounded-md flex-shrink-0 sm:opacity-0 sm:group-hover:opacity-100 opacity-100 scale-100"
-                aria-label={isExpanded ? "Collapse details" : "Expand details"}
-              >
-                {isExpanded ? (
-                  <ChevronDown className="h-4 w-4 text-muted-foreground hover:text-foreground" />
-                ) : (
-                  <ChevronRight className="h-4 w-4 text-muted-foreground hover:text-foreground" />
-                )}
-              </button>
+              {hasContent && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggle();
+                  }}
+                  className="transition-all duration-200 p-1.5 rounded-md flex-shrink-0 sm:opacity-0 sm:group-hover:opacity-100 opacity-100 scale-100"
+                  aria-label={isExpanded ? "Collapse details" : "Expand details"}
+                >
+                  {isExpanded ? (
+                    <ChevronDown className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                  ) : (
+                    <ChevronRight className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                  )}
+                </button>
+              )}
             </div>
           </div>
           <p className="text-sm text-muted-foreground mb-2 sm:mb-3 leading-relaxed">
@@ -293,32 +221,52 @@ const ExperienceDetails = ({ experience }) => {
 const ExperienceCard = ({ experience }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // Check if experience has any details to show
+  const hasDetails = () => {
+    return (
+      (experience.responsibilities && experience.responsibilities.length > 0) ||
+      (experience.technologies && experience.technologies.length > 0) ||
+      (experience.achievements && experience.achievements.length > 0) ||
+      // Check for any additional custom fields that have content
+      Object.entries(experience).some(([key, value]) => {
+        const standardFields = ['id', 'title', 'company', 'period', 'location', 'type', 'logoUrl'];
+        return !standardFields.includes(key) && value && 
+               (Array.isArray(value) ? value.length > 0 : value.toString().trim() !== '');
+      })
+    );
+  };
+
+  const hasContent = hasDetails();
+
   return (
     <div
-      className="group py-4 px-3 sm:py-6 sm:px-4 cursor-pointer"
-      onClick={() => setIsExpanded(!isExpanded)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
+      className={`group py-4 px-3 sm:py-6 sm:px-4 ${hasContent ? 'cursor-pointer' : ''}`}
+      onClick={hasContent ? () => setIsExpanded(!isExpanded) : undefined}
+      role={hasContent ? "button" : undefined}
+      tabIndex={hasContent ? 0 : undefined}
+      onKeyDown={hasContent ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           setIsExpanded(!isExpanded);
         }
-      }}
+      } : undefined}
     >
       <ExperienceCardHeader
         experience={experience}
         isExpanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        onToggle={hasContent ? () => setIsExpanded(!isExpanded) : undefined}
+        hasContent={hasContent}
       />
 
-      {/* Expandable Content */}
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] opacity-100 mt-4 sm:mt-6' : 'max-h-0 opacity-0'
-          }`}
-      >
-        <ExperienceDetails experience={experience} />
-      </div>
+      {/* Expandable Content - Only render if there are details */}
+      {hasContent && (
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] opacity-100 mt-4 sm:mt-6' : 'max-h-0 opacity-0'
+            }`}
+        >
+          <ExperienceDetails experience={experience} />
+        </div>
+      )}
     </div>
   );
 };

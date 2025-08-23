@@ -3,83 +3,24 @@ import { GraduationCap, Award, BookOpen, ExternalLink
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-// Constants
-const EDUCATION_TYPES = {
-  MASTERS: "masters",
-  GRADUATION: "graduation",
-  HIGHER_EDUCATION: "higher education"
-};
-
-const TYPE_ICONS = {
-  [EDUCATION_TYPES.MASTERS]: GraduationCap,
-  [EDUCATION_TYPES.GRADUATION]: BookOpen,
-  [EDUCATION_TYPES.HIGHER_EDUCATION]: Award
-};
-
-const TYPE_BADGE_CLASSES = {
-  [EDUCATION_TYPES.MASTERS]: "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-950 dark:text-purple-300 dark:border-purple-800",
-  [EDUCATION_TYPES.GRADUATION]: "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800",
-  [EDUCATION_TYPES.HIGHER_EDUCATION]: "bg-green-100 text-green-800 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800"
-};
-
-// Data
-const educationData = [
-  {
-    id: "1",
-    degree: "Master of Operational Research",
-    institution: "Department of Operational Research, University of Delhi",
-    period: "2025 – Present",
-    location: "New Delhi, India",
-    type: EDUCATION_TYPES.MASTERS,
-    logoUrl: "/logos/Delhi_University.png",
-    gpa: "",
-    achievements: [
-      "Currently pursuing advanced research in operational optimization",
-      "Specializing in mathematical modeling and data analysis"
-    ],
-    keySubjects: ["Operations Research", "Mathematical Modeling", "Data Analysis", "Optimization"]
-  },
-  {
-    id: "2",
-    degree: "BSc Computer Science",
-    institution: "Shivaji College, University of Delhi",
-    period: "2022 – 2025",
-    location: "New Delhi, India",
-    type: EDUCATION_TYPES.GRADUATION,
-    logoUrl: "/logos/shivaji logo.png",
-    gpa: "CGPA: 8.2/10",
-    achievements: [
-      "Graduated with distinction",
-      "Completed comprehensive computer science curriculum"
-    ],
-    keySubjects: ["Data Structures", "Algorithms", "Database Systems", "Web Development", "Software Engineering"]
-  },
-  {
-    id: "3",
-    degree: "Grade: 12th",
-    institution: "Plato Public Sr. Sec. School",
-    period: "2022",
-    location: "New Delhi, India",
-    type: EDUCATION_TYPES.HIGHER_EDUCATION,
-    logoUrl: "/logos/PlatoLogo.jpeg",
-    gpa: "Percentage: 90%",
-    achievements: [
-      "Outstanding academic performance",
-      "Strong foundation in science and mathematics"
-    ],
-    keySubjects: ["Physics", "Chemistry", "Mathematics", "Computer Science", "English"]
-  }
-];
+import { 
+  EDUCATION_TYPES, 
+  EDUCATION_TYPE_ICONS, 
+  EDUCATION_TYPE_BADGE_CLASSES, 
+  educationData 
+} from "@/Data/Data";
 
 // Utility functions
 const getTypeIcon = (type) => {
-  const IconComponent = TYPE_ICONS[type.toLowerCase()] || TYPE_ICONS[EDUCATION_TYPES.GRADUATION];
+  const iconName = EDUCATION_TYPE_ICONS[type.toLowerCase()] || EDUCATION_TYPE_ICONS[EDUCATION_TYPES.GRADUATION];
+  const IconComponent = iconName === "GraduationCap" ? GraduationCap : 
+                       iconName === "BookOpen" ? BookOpen : 
+                       iconName === "Award" ? Award : BookOpen;
   return <IconComponent className="h-3.5 w-3.5" />;
 };
 
 const getTypeBadgeClass = (type) => {
-  return TYPE_BADGE_CLASSES[type.toLowerCase()] || TYPE_BADGE_CLASSES[EDUCATION_TYPES.GRADUATION];
+  return EDUCATION_TYPE_BADGE_CLASSES[type.toLowerCase()] || EDUCATION_TYPE_BADGE_CLASSES[EDUCATION_TYPES.GRADUATION];
 };
 
 const capitalizeType = (type) => {

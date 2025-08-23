@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils.js";
 import { Dock, DockIcon } from "@/components/magicui/dock";
+import { dockNavData } from "@/Data/Data";
 
 export const IconProps = {};
 
@@ -58,43 +59,28 @@ const Icons = {
   ),
 };
 
-const DATA = {
-  navbar: [
-    { href: "#", icon: HomeIcon, label: "Home" },
-    { href: "#", icon: PencilIcon, label: "Blog" },
-  ],
-  contact: {
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/shivamGupta-25",
-        icon: Icons.github,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "#",
-        icon: Icons.linkedin,
-      },
-      // X: {
-      //   name: "X",
-      //   url: "#",
-      //   icon: Icons.x,
-      // },
-      email: {
-        name: "Send Email",
-        url: "#",
-        icon: Icons.email,
-      },
-    },
-  },
-};
+const DATA = dockNavData;
 
 export function DockNav() {
   const handleClick = (href) => {
     // Handle navigation for single-page applications
-    // You can use React Router's navigate or window.location for external links
-    if (href.startsWith('http')) {
+    if (href.startsWith('mailto:')) {
+      // For email links, use window.location to open the default email client
+      window.location.href = href;
+    } else if (href.startsWith('http')) {
+      // For external links, open in new tab
       window.open(href, '_blank');
+    } else if (href === '#') {
+      // For home icon, scroll to hero section
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        // Use window.scrollTo for more reliable smooth scrolling
+        const heroTop = heroSection.offsetTop;
+        window.scrollTo({
+          top: heroTop,
+          behavior: 'smooth'
+        });
+      }
     } else {
       // For internal navigation, you might want to use React Router
       // navigate(href);
@@ -106,49 +92,56 @@ export function DockNav() {
     <div className="fixed bottom-0 left-0 right-0 mb-8  z-50">
       <TooltipProvider>
         <Dock direction="middle">
-          {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={() => handleClick(item.href)}
-                    aria-label={item.label}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
-                    )}
-                  >
-                    <item.icon className="size-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
+          {DATA.navbar.map((item) => {
+            const IconComponent = item.icon === "HomeIcon" ? HomeIcon : 
+                                 item.icon === "PencilIcon" ? PencilIcon : HomeIcon;
+            return (
+              <DockIcon key={item.label}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={() => handleClick(item.href)}
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full",
+                      )}
+                    >
+                      <IconComponent className="size-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            );
+          })}
           <Separator orientation="vertical" className="h-full bg-slate-500" />
-          {Object.entries(DATA.contact.social).map(([name, social]) => (
-            <DockIcon key={name}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={() => handleClick(social.url)}
-                    aria-label={social.name}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
-                    )}
-                  >
-                    <social.icon className="size-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
+          {Object.entries(DATA.contact.social).map(([name, social]) => {
+            const IconComponent = Icons[social.icon];
+            return (
+              <DockIcon key={name}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={() => handleClick(social.url)}
+                      aria-label={social.name}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full",
+                      )}
+                    >
+                      <IconComponent className="size-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            );
+          })}
           <Separator orientation="vertical" className="h-full bg-slate-500" />
           <DockIcon>
             <Tooltip>

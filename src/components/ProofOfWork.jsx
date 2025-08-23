@@ -3,28 +3,10 @@ import { DialogStack, DialogStackTrigger, DialogStackOverlay, DialogStackBody, D
 from '@/components/ui/stacked-dialog.jsx'
 import { Button } from '@/components/ui/button'
 import { Award } from 'lucide-react'
+import { proofOfWorkData } from '@/Data/Data'
 
 const ProofOfWork = () => {
-  const certificates = [
-    {
-      id: 1,
-      title: "VCIS Certificate",
-      description: "Vice-Chancellor Internship Scheme Certificate from University of Delhi",
-      image: "/certificates/VCIS Certificate.jpg"
-    },
-    {
-      id: 2,
-      title: "Principal Internship Scheme Certificate",
-      description: "Principal Internship Scheme Certificate from Shivaji College",
-      image: "/certificates/Principal Internship Scheme Certificate.jpg"
-    },
-    {
-      id: 3,
-      title: "Letter of Appreciation - Udgeet",
-      description: "Letter of Appreciation for Udgeet project work",
-      image: "/certificates/Letter of Appreciation_Udgeet.jpg"
-    }
-  ];
+  const proofOfWork = proofOfWorkData;
 
   return (
     <DialogStack>
@@ -40,13 +22,13 @@ const ProofOfWork = () => {
       </DialogStackTrigger>
       <DialogStackOverlay className="bg-background/80 backdrop-blur-sm" />
       <DialogStackBody>
-        {certificates.map((cert, index) => (
+        {proofOfWork.map((cert, index) => (
           <DialogStackContent key={cert.id} className="font-sans">
             <DialogStackHeader>
               <h3 className="text-md font-medium text-foreground">{cert.title}</h3>
               <p className="text-sm text-muted-foreground">
                 {index === 0 ? "Tap Next to view the next certificate." : 
-                 index === certificates.length - 1 ? "Click outside the dialog to close." : 
+                 index === proofOfWork.length - 1 ? "Click outside the dialog to close." : 
                  "Use Previous to go back or Next to continue."}
               </p>
             </DialogStackHeader>
@@ -67,7 +49,7 @@ const ProofOfWork = () => {
                       Previous
                     </DialogStackPrevious>
                   )}
-                  {index < certificates.length - 1 && (
+                  {index < proofOfWork.length - 1 && (
                     <DialogStackNext className="rounded-md bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-2 text-xs">
                       Next
                     </DialogStackNext>
