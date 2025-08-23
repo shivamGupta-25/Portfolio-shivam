@@ -8,7 +8,7 @@ import {
   EDUCATION_TYPE_ICONS, 
   EDUCATION_TYPE_BADGE_CLASSES, 
   educationData 
-} from "@/Data/Data";
+} from "@/Data/Data.jsx";
 
 // Utility functions
 const getTypeIcon = (type) => {

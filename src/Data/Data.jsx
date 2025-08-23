@@ -1,3 +1,5 @@
+import { Globe, Code } from "lucide-react";
+
 // Skills Data
 export const skillsData = {
   'Programming Languages': [
@@ -61,7 +63,7 @@ export const DYNAMIC_COLORS = ['blue', 'green', 'yellow', 'pink', 'purple', 'ind
 export const experienceData = [
   {
     id: "4",
-    title: "Udhmodya, Delhi University",
+    title: "Udhmodya Foundation, Delhi University",
     company: "Book with UVA (Start-up)",
     period: "Aug 2025 – Present",
     location: "North Campus, New Delhi",
@@ -167,7 +169,7 @@ export const educationData = [
       "Graduated with distinction",
       "Completed comprehensive computer science curriculum"
     ],
-    keySubjects: ["Python","Database Systems", "Data Analysis" ,"Computer Networks", "Web Development", "Operating Systems", "Data Structures"]
+    keySubjects: ["Python", "Database Systems", "Data Analysis", "Computer Networks", "Web Development", "Operating Systems", "Data Structures"]
   },
   {
     id: "1",
@@ -223,6 +225,7 @@ export const iconsData = {
   github: "github",
 };
 
+// Certificate Data
 export const certificate = [
   {
     name: "Advance Excel and Visualization",
@@ -279,4 +282,101 @@ export const certificate = [
     rotation: "md:rotate-[-2deg] rotate-0",
     certificate: "/certificates/General/UI UX Workshop.jpg"
   }
+];
+
+// Project Data
+export const ProjectDATA = [
+  {
+    title: "Computer Science Society Website – Shivaji College",
+    href: "https://websters-shivaji.vercel.app",
+    dates: "April 2025",
+    description:
+      "Built and deployed a responsive full-stack web app using Next.js, React, and Tailwind CSS on Vercel. Developed an event management system with MongoDB, secure admin dashboard, REST APIs, and added Analytics Dashboard. Automated emails using Nodemailer, added backend checks for validation and duplicates.",
+    technologies: [
+      "Next.js",
+      "React",
+      "JavaScript",
+      "TailwindCSS",
+      "MongoDB",
+      "Nodemailer",
+      "REST API",
+    ],
+    links: [
+      {
+        type: "Website",
+        href: "https://websters-shivaji.vercel.app",
+        icon: <Globe className="h-4 w-4" />,
+      },
+      {
+        type: "Source",
+        href: "https://github.com/shivamGupta-25/websters-shivaji",
+        icon: <Code className="h-4 w-4" />,
+      },
+    ],
+    image: "/ProjectAssets/Websters.png",
+    video: "",
+  },
+  {
+    title: "Student Desktop Application with User and Admin Dashboards",
+    href: "",
+    dates: "November 2024",
+    description:
+      "Built a Python desktop app with CustomTkinter UI and SQLite for efficient local storage. Implemented secure OTP-based authentication for login and password recovery via email. Designed user/admin dashboards for streamlined student data access and management.",
+    technologies: [
+      "Python",
+      "SQLite",
+      "CustomTkinter",
+      "Email OTP Authentication",
+    ],
+    links: [],
+    image: "/ProjectAssets/TkinterDatabase.png",
+    video: "",
+  },
+  {
+    title: "Sales Data Analysis Using Python",
+    href: "",
+    dates: "April 2024",
+    description:
+      "Analyzed sales data using Pandas and Matplotlib to identify revenue trends and peak sales periods. Extracted insights on top cities, optimal ad timing, and customer purchase patterns. Identified opportunities for product bundling and highlighted best-selling products.",
+    technologies: ["Python", "Pandas", "Matplotlib", "OS"],
+    links: [
+      {
+        type: "Source",
+        href: "https://github.com/shivamGupta-25/Sales-Analysis-Using-Python",
+        icon: <Code className="h-4 w-4" />,
+      },
+    ],
+    image: "/ProjectAssets/SalesAnalysisPython.png",
+    video: "",
+  },
+  {
+    title: "Sales Data Cleaning Using SQL",
+    href: "",
+    dates: "March 2024",
+    description:
+      "Cleaned and prepared data in SQL Server by removing headers, NULLs, duplicates, and correcting data types. Manipulated data using SQL queries and CTEs for efficient filtering and transformation. Engineered features like City, Sales, and Month columns to enable geographical and time-based sales analysis.",
+    technologies: ["SQL Server", "SQL Queries", "CTEs"],
+    links: [
+
+    ],
+    image: "/ProjectAssets/default-project.svg",
+    video: "",
+  },
+  {
+    title: "Udgeet Institution Website",
+    href: "https://udgeet.in",
+    dates: "July 2025",
+    description:
+      "Designed and developed a fully functional website (udgeet.in) for the Literary Institution Udgeet using WordPress and Elementor. Ensured a responsive and user-friendly interface, optimized performance, SEO, and mobile responsiveness to enhance user experience and visibility.",
+    technologies: ["WordPress", "Elementor", "SEO", "Responsive Design"],
+    links: [
+      {
+        type: "Website",
+        href: "https://udgeet.in",
+        icon: <Globe className="h-4 w-4" />,
+      },
+    ],
+    image: "/ProjectAssets/default-project.svg",
+    video: "",
+  },
 ];

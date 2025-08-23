@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils.js";
 import { Dock, DockIcon } from "@/components/magicui/dock";
-import { dockNavData } from "@/Data/Data";
+import { dockNavData } from "@/Data/Data.jsx";
 
 export const IconProps = {};
 

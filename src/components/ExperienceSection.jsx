@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import ResumePDF from "@/Data/ShivamRajGupta_CV.pdf";
 import ProofOfWork from "./ProofOfWork";
 import { EXPERIENCE_TYPES, TYPE_ICONS, TYPE_BADGE_CLASSES, DYNAMIC_COLORS, experienceData } 
-from "@/Data/Data";
+from "@/Data/Data.jsx";
 
 // Utility functions
 const getTypeIcon = (type) => {

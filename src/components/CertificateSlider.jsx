@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import { certificate } from "@/Data/Data";
+import { certificate } from "@/Data/Data.jsx";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";

@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { SplitText } from "gsap/SplitText"
 import { useMediaQuery } from "react-responsive"
-import { skillsData } from '@/Data/Data'
+import { skillsData } from '@/Data/Data.jsx'
 
 const Skills = () => {
   const allSkills = Object.values(skillsData).flat()

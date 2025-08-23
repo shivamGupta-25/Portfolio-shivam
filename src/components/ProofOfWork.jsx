@@ -3,7 +3,7 @@ import { DialogStack, DialogStackTrigger, DialogStackOverlay, DialogStackBody, D
 from '@/components/ui/stacked-dialog.jsx'
 import { Button } from '@/components/ui/button'
 import { Award } from 'lucide-react'
-import { proofOfWorkData } from '@/Data/Data'
+import { proofOfWorkData } from '@/Data/Data.jsx'
 
 const ProofOfWork = () => {
   const proofOfWork = proofOfWorkData;
