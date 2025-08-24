@@ -1,6 +1,10 @@
 import CertificateSlider from "@/components/CertificateSlider";
+import { CertificateCarousel } from "@/components/CertificateCarousel";
+import { useMediaQuery } from "react-responsive";
 
 const CertificationSection = () => {
+  const isLargeScreen = useMediaQuery({ minWidth: 1024 });
+
   return (
     <section className="pt-12 pb-12 overflow-hidden font-sans">
       <div className="text-center sm:text-left mb-6 sm:mb-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -11,8 +15,12 @@ const CertificationSection = () => {
           Explore my certifications and professional activities, reflecting my dedication to continuous learning and growth.
         </p>
       </div>
-      <div className="certificate-section min-h-dvh bg-background w-full flex lg:flex-row flex-col items-center">
-        <CertificateSlider />
+      <div className="certificate-section h-auto w-full">
+        {isLargeScreen ? (
+          <CertificateSlider />
+        ) : (
+          <CertificateCarousel />
+        )}
       </div>
     </section>
   );
