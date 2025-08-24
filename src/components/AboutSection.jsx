@@ -10,16 +10,21 @@ const About = () => {
   });
 
   useGSAP(() => {
+    // Only run animations on devices above 1024px
+    if (isTablet) {
+      return;
+    }
+
     // Animation constants
     const animationConfig = {
       title: {
-        y: isTablet ? 40 : 50,
-        duration: isTablet ? 0.9 : 0.8,
+        y: 50,
+        duration: 0.8,
         stagger: 0.1,
       },
       header: {
-        y: isTablet ? 25 : 30,
-        duration: isTablet ? 0.7 : 0.6,
+        y: 30,
+        duration: 0.6,
         stagger: 0.02,
       },
       content: {
@@ -31,10 +36,10 @@ const About = () => {
     // Scroll trigger configuration
     const scrollTriggerOptions = {
       trigger: ".about-container",
-      start: isTablet ? "top 80%" : "top top",
-      end: isTablet ? "+=120%" : "+=200%",
+      start: "top top",
+      end: "+=200%",
       scrub: true,
-      pin: !isTablet,
+      pin: true,
     };
 
     const mainTl = gsap.timeline({

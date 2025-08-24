@@ -11,7 +11,7 @@ const Skills = () => {
   });
 
   return (
-    <section id="skills-section" className="skills-container h-auto p-4 sm:p-6 lg:p-8 py-6 sm:py-8 lg:py-12 max-w-5xl mx-auto font-sans">
+    <section className="skills-container h-auto p-4 sm:p-6 lg:p-8 py-6 sm:py-8 lg:py-12 max-w-5xl mx-auto font-sans">
       <div className="skills-header text-center sm:text-left mb-8">
         <h2 className="text-5xl font-extrabold sm:text-3xl lg:text-5xl tracking-tight">
           Skills

@@ -98,7 +98,7 @@ export const CertificateCarousel = ({
   };
 
   return (
-    <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20 overflow-hidden", className)}>
+    <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-6 mb-12 overflow-hidden", className)}>
       <div className="relative">
         <div 
           className="relative h-80 w-full cursor-grab active:cursor-grabbing"

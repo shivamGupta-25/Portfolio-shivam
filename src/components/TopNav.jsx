@@ -100,7 +100,7 @@ const TopNav = () => {
         />
       </div>
 
-      <div className='overflow-hidden'>
+      <div className='overflow-hidden font-sans'>
         <ContactForm />
       </div>
     </div>

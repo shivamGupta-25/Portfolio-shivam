@@ -1,4 +1,8 @@
-import { Globe, Code } from "lucide-react";
+import { Globe, Code, FileCode, Database, BarChart3, Server } from "lucide-react";
+import { RiNextjsFill } from "react-icons/ri";
+import { IoAnalyticsOutline } from "react-icons/io5";
+import { SiMysql } from "react-icons/si";
+import { FaPython } from "react-icons/fa";
 
 // Skills Data
 export const skillsData = {
@@ -288,7 +292,7 @@ export const certificate = [
 export const ProjectDATA = [
   {
     title: "Computer Science Society Website – Shivaji College",
-    href: "https://websters-shivaji.vercel.app",
+    type: "Website",
     dates: "April 2025",
     description:
       "Built and deployed a responsive full-stack web app using Next.js, React, and Tailwind CSS on Vercel. Developed an event management system with MongoDB, secure admin dashboard, REST APIs, and added Analytics Dashboard. Automated emails using Nodemailer, added backend checks for validation and duplicates.",
@@ -313,12 +317,12 @@ export const ProjectDATA = [
         icon: <Code className="h-4 w-4" />,
       },
     ],
-    image: "/ProjectAssets/Websters.png",
-    video: "",
+    icon: <RiNextjsFill className="h-8 w-8 sm:h-14 sm:w-14" />,
+    // video: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
   },
   {
     title: "Student Desktop Application with User and Admin Dashboards",
-    href: "",
+    type: "Application",
     dates: "November 2024",
     description:
       "Built a Python desktop app with CustomTkinter UI and SQLite for efficient local storage. Implemented secure OTP-based authentication for login and password recovery via email. Designed user/admin dashboards for streamlined student data access and management.",
@@ -328,13 +332,19 @@ export const ProjectDATA = [
       "CustomTkinter",
       "Email OTP Authentication",
     ],
-    links: [],
-    image: "/ProjectAssets/TkinterDatabase.png",
-    video: "",
+    links: [
+      {
+        type: "Source",
+        href: "https://github.com/shivamGupta-25/CustomTkinter-Database-Project-Version-2-SQLite-Integrated",
+        icon: <Code className="h-4 w-4" />,
+      },
+    ],
+    icon: <FaPython className="h-8 w-8 sm:h-12 sm:w-12" />,
+    // video: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
   },
   {
     title: "Sales Data Analysis Using Python",
-    href: "",
+    type: "Analysis Project",
     dates: "April 2024",
     description:
       "Analyzed sales data using Pandas and Matplotlib to identify revenue trends and peak sales periods. Extracted insights on top cities, optimal ad timing, and customer purchase patterns. Identified opportunities for product bundling and highlighted best-selling products.",
@@ -346,37 +356,24 @@ export const ProjectDATA = [
         icon: <Code className="h-4 w-4" />,
       },
     ],
-    image: "/ProjectAssets/SalesAnalysisPython.png",
-    video: "",
+    icon: <IoAnalyticsOutline className="h-8 w-8 sm:h-12 sm:w-12" />,
+    // video: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
   },
   {
     title: "Sales Data Cleaning Using SQL",
-    href: "",
+    type: "Analysis Project",
     dates: "March 2024",
     description:
       "Cleaned and prepared data in SQL Server by removing headers, NULLs, duplicates, and correcting data types. Manipulated data using SQL queries and CTEs for efficient filtering and transformation. Engineered features like City, Sales, and Month columns to enable geographical and time-based sales analysis.",
     technologies: ["SQL Server", "SQL Queries", "CTEs"],
     links: [
-
-    ],
-    image: "/ProjectAssets/default-project.svg",
-    video: "",
-  },
-  {
-    title: "Udgeet Institution Website",
-    href: "https://udgeet.in",
-    dates: "July 2025",
-    description:
-      "Designed and developed a fully functional website (udgeet.in) for the Literary Institution Udgeet using WordPress and Elementor. Ensured a responsive and user-friendly interface, optimized performance, SEO, and mobile responsiveness to enhance user experience and visibility.",
-    technologies: ["WordPress", "Elementor", "SEO", "Responsive Design"],
-    links: [
       {
-        type: "Website",
-        href: "https://udgeet.in",
-        icon: <Globe className="h-4 w-4" />,
-      },
+        type: "Source",
+        href: "https://github.com/shivamGupta-25/Sales-Analysis-Using-Python",
+        icon: <Code className="h-4 w-4" />,
+      }
     ],
-    image: "/ProjectAssets/default-project.svg",
-    video: "",
-  },
+    icon: <SiMysql className="h-8 w-8 sm:h-12 sm:w-12" />,
+    // video: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+  }
 ];

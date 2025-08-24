@@ -6,6 +6,18 @@ import { SplitText } from 'gsap/all';
 
 const HeroSection = () => {
 
+  const scrollToSkills = () => {
+    const projectSection = document.getElementById('project-section');
+    if (projectSection) {
+      // Use window.scrollTo for more reliable smooth scrolling
+      const projectTop = projectSection.offsetTop;
+      window.scrollTo({
+        top: projectTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   useGSAP(() => {
     const titleSplit = SplitText.create(".hero-title", {
       type: "chars",
@@ -64,12 +76,13 @@ const HeroSection = () => {
               </h1>
             </div>
           </div>
-          <h2>
+          <h2 className='font-sans'>
             Transforming complex data into actionable insights. Specializing in analytics, visualization, and data-driven decision making.
           </h2>
 
           <Button
-            className="hero-button">
+            className="hero-button font-sans font-extrabold"
+            onClick={scrollToSkills}>
             Explore My Work
           </Button>
         </div>

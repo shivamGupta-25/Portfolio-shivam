@@ -11,6 +11,7 @@ import Skills from './components/SkillsSection'
 import Experience from './components/ExperienceSection'
 import EducationSection from './components/EducationSection'
 import CertificationSection from './components/CertificateSection'
+import ProjectSection from './components/ProjectSection'
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -35,6 +36,7 @@ const App = () => {
           <Skills />
           <Experience />
           <EducationSection />
+          <ProjectSection />
           <CertificationSection />
         </div>
       </main>
