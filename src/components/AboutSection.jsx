@@ -117,9 +117,9 @@ const About = () => {
             </Highlighter>
             {" "}with expertise in{" "}
             <Highlighter action="box" color="#10b981">
-              Python, SQL, Excel, and data visualization
-            </Highlighter>
-            . I transform raw data into actionable insights through data cleaning and EDA.
+              Python, SQL, Excel, and data visualization.
+            </Highlighter>{" "}
+            I transform raw data into actionable insights through data cleaning and EDA.
           </p>
 
           <p className="text-foreground">
@@ -152,7 +152,7 @@ const About = () => {
               {" "}as a Vice-Chancellor Intern and Administrative intern at Shivaji College.
             </Highlighter>
           </p>
-          
+
           <p className="text-foreground">
             Beyond analytics, I build scalable web applications using{" "}
             <Highlighter action="underline" color="#ef4444">
