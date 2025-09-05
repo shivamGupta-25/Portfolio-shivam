@@ -6,6 +6,7 @@ import ResumePDF from "@/Data/ShivamRajGupta_CV.pdf";
 import ProofOfWork from "./ProofOfWork";
 import { EXPERIENCE_TYPES, TYPE_ICONS, TYPE_BADGE_CLASSES, DYNAMIC_COLORS, experienceData } 
 from "@/Data/Data.jsx";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Utility functions
 const getTypeIcon = (type) => {
@@ -238,23 +239,31 @@ const ExperienceCard = ({ experience }) => {
 
   const hasContent = hasDetails();
 
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+    // Refresh ScrollTrigger after accordion animation completes
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 350); // Slightly longer than the CSS transition duration
+  };
+
   return (
     <div
       className={`group py-4 px-3 sm:py-6 sm:px-4 ${hasContent ? 'cursor-pointer' : ''}`}
-      onClick={hasContent ? () => setIsExpanded(!isExpanded) : undefined}
+      onClick={hasContent ? handleToggle : undefined}
       role={hasContent ? "button" : undefined}
       tabIndex={hasContent ? 0 : undefined}
       onKeyDown={hasContent ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          setIsExpanded(!isExpanded);
+          handleToggle();
         }
       } : undefined}
     >
       <ExperienceCardHeader
         experience={experience}
         isExpanded={isExpanded}
-        onToggle={hasContent ? () => setIsExpanded(!isExpanded) : undefined}
+        onToggle={hasContent ? handleToggle : undefined}
         hasContent={hasContent}
       />
 

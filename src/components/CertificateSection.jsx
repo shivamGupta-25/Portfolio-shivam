@@ -15,7 +15,7 @@ const CertificationSection = () => {
           Explore my certifications and professional activities, reflecting my dedication to continuous learning and growth.
         </p>
       </div>
-      <div className="certificate-section h-auto w-full">
+      <div className="certificate-section h-auto w-full will-change-transform">
         {isLargeScreen ? (
           <CertificateSlider />
         ) : (

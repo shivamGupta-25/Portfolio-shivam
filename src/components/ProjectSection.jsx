@@ -3,6 +3,7 @@ import { Globe, ChevronDown, ChevronRight, Calendar, FolderOpen, Play } from "lu
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProjectDATA } from "@/Data/Data.jsx";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Utility functions
 const getProjectIcon = (project) => {
@@ -237,23 +238,31 @@ const ProjectCard = ({ project }) => {
 
   const hasContent = hasDetails();
 
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+    // Refresh ScrollTrigger after accordion animation completes
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 350); // Slightly longer than the CSS transition duration
+  };
+
   return (
     <div
       className={`group py-3 px-2 sm:py-4 sm:px-3 lg:py-6 lg:px-4 ${hasContent ? 'cursor-pointer' : ''}`}
-      onClick={hasContent ? () => setIsExpanded(!isExpanded) : undefined}
+      onClick={hasContent ? handleToggle : undefined}
       role={hasContent ? "button" : undefined}
       tabIndex={hasContent ? 0 : undefined}
       onKeyDown={hasContent ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          setIsExpanded(!isExpanded);
+          handleToggle();
         }
       } : undefined}
     >
       <ProjectCardHeader
         project={project}
         isExpanded={isExpanded}
-        onToggle={hasContent ? () => setIsExpanded(!isExpanded) : undefined}
+        onToggle={hasContent ? handleToggle : undefined}
         hasContent={hasContent}
       />
 

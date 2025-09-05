@@ -1,11 +1,15 @@
 import { useGSAP } from "@gsap/react";
 import { certificate } from "@/Data/Data.jsx";
 import gsap from "gsap";
-import { useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CertificateSlider = () => {
   const sliderRef = useRef();
+  const scrollTriggerRef = useRef();
 
   const isTablet = useMediaQuery({
     query: "(min-width: 768px)",
@@ -15,26 +19,58 @@ const CertificateSlider = () => {
     query: "(min-width: 1024px)",
   });
 
+  // Add resize observer to handle dynamic content changes
+  useEffect(() => {
+    const handleResize = () => {
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.refresh();
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(handleResize);
+    if (sliderRef.current) {
+      resizeObserver.observe(sliderRef.current);
+    }
+
+    // Also listen for window resize
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useGSAP(() => {
+    if (!isDesktop || !sliderRef.current) return;
+
     const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
 
-    if (isDesktop) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".certificate-section",
-          start: "2% top",
-          end: `+=${scrollAmount + 300}px`,
-          scrub: true,
-          pin: true,
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".certificate-section",
+        start: "top top",
+        end: `+=${scrollAmount + 300}px`,
+        scrub: true,
+        pin: true,
+        pinSpacing: true,
+        refreshPriority: -1,
+        invalidateOnRefresh: true,
+        onRefresh: () => {
+          // Recalculate scroll amount when content changes
+          const newScrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+          tl.vars.scrollTrigger.end = `+=${newScrollAmount + 300}px`;
+        }
+      },
+    });
 
-      tl.to(".certificate-section", {
-        x: `-${scrollAmount + 300}px`,
-        ease: "power1.inOut",
-      });
-    }
-  });
+    scrollTriggerRef.current = tl.scrollTrigger;
+
+    tl.to(".certificate-section", {
+      x: `-${scrollAmount + 300}px`,
+      ease: "power1.inOut",
+    });
+  }, [isDesktop]);
 
   return (
     <div 
